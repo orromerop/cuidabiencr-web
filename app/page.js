@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -92,12 +94,31 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Solicitar acceso ── */}
+      <section className={styles.section} id="contacto">
+        <div className={styles.solicitarWrap}>
+          <div className={styles.solicitarInfo}>
+            <span className={styles.heroBadge}>Acceso por invitación</span>
+            <h2 className={styles.solicitarTitle}>¿Querés probarlo?</h2>
+            <p className={styles.solicitarDesc}>
+              Completá el formulario y en menos de 24 horas te enviamos un código de acceso para explorar la plataforma <strong>gratis por 7 días</strong>. Sin tarjeta de crédito.
+            </p>
+            <ul className={styles.solicitarBeneficios}>
+              <li>✓ Acceso completo a todos los módulos</li>
+              <li>✓ Sin compromiso de pago</li>
+              <li>✓ Soporte durante el período de prueba</li>
+            </ul>
+          </div>
+          <SolicitarForm />
+        </div>
+      </section>
+
       {/* ── CTA final ── */}
-      <section className={styles.ctaSection} id="contacto">
-        <h2 className={styles.ctaTitle}>¿Listo para empezar?</h2>
-        <p className={styles.ctaDesc}>Creá tu cuenta gratis hoy. Sin tarjeta de crédito.</p>
-        <a href="https://app.cuidabiencr.com/login" className={styles.btnPrimaryLg}>
-          Crear cuenta gratis →
+      <section className={styles.ctaSection}>
+        <h2 className={styles.ctaTitle}>Gestión moderna para el cuido que merecen</h2>
+        <p className={styles.ctaDesc}>Únete a las organizaciones que ya confían en CuidaBien.</p>
+        <a href="#contacto" className={styles.btnPrimaryLg}>
+          Solicitar acceso gratuito →
         </a>
       </section>
 
@@ -110,6 +131,71 @@ export default function Home() {
         <p className={styles.footerCopy}>© {new Date().getFullYear()} CuidaBien. Hecho con ♥ en Costa Rica.</p>
       </footer>
     </main>
+  );
+}
+
+function SolicitarForm() {
+  const [form, setForm] = useState({ nombre_contacto: '', org_nombre: '', email: '' });
+  const [estado, setEstado] = useState(null); // null | 'enviando' | 'ok' | 'error'
+  const [error, setError] = useState('');
+
+  const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
+
+  async function enviar() {
+    if (!form.nombre_contacto || !form.org_nombre || !form.email) {
+      setError('Completá todos los campos'); setEstado('error'); return;
+    }
+    setEstado('enviando'); setError('');
+    try {
+      const res = await fetch('https://app.cuidabiencr.com/auth/solicitar-acceso', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setEstado('ok');
+      } else {
+        const d = await res.json();
+        setError(d.error || 'Error al enviar'); setEstado('error');
+      }
+    } catch {
+      setError('No se pudo conectar. Intentá de nuevo.'); setEstado('error');
+    }
+  }
+
+  if (estado === 'ok') return (
+    <div className={styles.formCard}>
+      <div className={styles.formOk}>
+        <div className={styles.formOkIcon}>✓</div>
+        <h3>¡Solicitud recibida!</h3>
+        <p>Te contactamos en menos de 24 horas con tu código de acceso.</p>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className={styles.formCard}>
+      <div className={styles.formField}>
+        <label className={styles.formLabel}>Tu nombre</label>
+        <input className={styles.formInput} type="text" placeholder="María González"
+          value={form.nombre_contacto} onChange={e => set('nombre_contacto', e.target.value)} />
+      </div>
+      <div className={styles.formField}>
+        <label className={styles.formLabel}>Nombre de tu organización</label>
+        <input className={styles.formInput} type="text" placeholder="Hogar San José"
+          value={form.org_nombre} onChange={e => set('org_nombre', e.target.value)} />
+      </div>
+      <div className={styles.formField}>
+        <label className={styles.formLabel}>Correo electrónico</label>
+        <input className={styles.formInput} type="email" placeholder="tu@email.com"
+          value={form.email} onChange={e => set('email', e.target.value)} />
+      </div>
+      {estado === 'error' && <p className={styles.formError}>{error}</p>}
+      <button className={styles.btnPrimary} onClick={enviar} disabled={estado === 'enviando'}
+        style={{ width: '100%', marginTop: '4px' }}>
+        {estado === 'enviando' ? 'Enviando...' : 'Solicitar acceso gratuito'}
+      </button>
+    </div>
   );
 }
 

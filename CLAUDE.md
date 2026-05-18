@@ -60,8 +60,27 @@ public/
 2. **Hero** — badge, título DM Serif, descripción, 2 CTAs
 3. **Funcionalidades** — grid de 8 cards con íconos
 4. **Planes** — 4 planes con precios, el "Empresa Básico" destacado
-5. **CTA final** — fondo morado degradado, botón blanco
-6. **Footer** — brand + copyright
+5. **Solicitar acceso** — formulario (nombre, org, email) + info de beneficios lado a lado
+6. **CTA final** — fondo morado degradado
+7. **Footer** — brand + copyright
+
+## Formulario de solicitud de acceso
+- Componente `SolicitarForm` en `page.js` (client component con `"use client"`)
+- `POST https://app.cuidabiencr.com/auth/solicitar-acceso` — guarda en Neon como `pendiente`
+- El SA revisa en `/superadmin/invitaciones` y aprueba manualmente
+- Al aprobar: se genera código + email automático al cliente
+- Cliente completa registro en `https://app.cuidabiencr.com/registro?codigo=XXXXXXXX`
+
+## Deploy
+- **Producción:** `cuidabiencr.com` → rama `main` → Vercel (auto-deploy en cada push)
+- **QA:** pendiente configurar `qa.cuidabiencr.com` → rama `qa` en Vercel + Cloudflare
+- **Dev:** local en Mac de Karen (`npm run dev` → localhost:3000)
+
+## Flujo de trabajo Karen
+```
+Trabaja en local → git push origin qa → Vercel publica en qa.cuidabiencr.com
+Oscar revisa → merge qa → main → cuidabiencr.com se actualiza
+```
 
 ## Links importantes
 ```

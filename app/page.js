@@ -8,7 +8,7 @@ export default function Home() {
       {/* ── Navbar ── */}
       <nav className={styles.nav}>
         <div className={styles.navBrand}>
-          <span className={styles.navLogo}>CB</span>
+          <img src="/brand/logo.svg" alt="CuidaBien" className={styles.navLogoImg} />
           <span className={styles.navName}>CuidaBien</span>
         </div>
         <div className={styles.navLinks}>
@@ -26,8 +26,8 @@ export default function Home() {
         <div className={styles.heroContent}>
           <span className={styles.heroBadge}>Hecho para Costa Rica. 🇨🇷</span>
           <h1 className={styles.heroTitle}>
-            Cuida mejor.<br />
-            <span className={styles.heroTitleAccent}>Gestiona con orden.</span>
+            Cuida mejor<br />
+            <span className={styles.heroTitleAccent}>Gestiona con orden</span>
           </h1>
           <p className={styles.heroDesc}>
             CuidaBien es la plataforma SaaS pensada para hogares de cuido y
@@ -126,7 +126,7 @@ export default function Home() {
       {/* ── Footer ── */}
       <footer className={styles.footer}>
         <div className={styles.footerBrand}>
-          <span className={styles.navLogo}>CB</span>
+          <img src="/brand/logo.svg" alt="CuidaBien" className={styles.navLogoImg} />
           <span>CuidaBien</span>
         </div>
         <p className={styles.footerCopy}>© {new Date().getFullYear()} CuidaBien. Hecho con ♥ en Costa Rica.</p>

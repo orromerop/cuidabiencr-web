@@ -24,7 +24,7 @@ export default function Home() {
       {/* ── Hero ── */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <span className={styles.heroBadge}>Hecho para Costa Rica 🇨🇷</span>
+          <span className={styles.heroBadge}>Hecho para Costa Rica. 🇨🇷</span>
           <h1 className={styles.heroTitle}>
             Cuida mejor.<br />
             <span className={styles.heroTitleAccent}>Gestiona con orden.</span>

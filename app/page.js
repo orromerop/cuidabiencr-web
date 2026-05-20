@@ -31,8 +31,9 @@ export default function Home() {
           </h1>
           <p className={styles.heroDesc}>
             CuidaBien es la plataforma SaaS pensada para hogares de cuido y
-            organizaciones de salud. Signos vitales, medicamentos, citas y
-            mucho más, todo en un solo lugar.
+            organizaciones de salud.
+            <br />
+            Signos vitales, medicamentos, citas y mucho más, todo en un solo lugar.
           </p>
           <div className={styles.heroCtas}>
             <a href="https://app.cuidabiencr.com/login" className={styles.btnPrimary}>

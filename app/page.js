@@ -25,10 +25,13 @@ export default function Home() {
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <span className={styles.heroBadge}>Hecho para Costa Rica. 🇨🇷</span>
-          <h1 className={styles.heroTitle}>
-            Cuida mejor<br />
-            <span className={styles.heroTitleAccent}>Gestiona con orden</span>
-          </h1>
+          <div className={styles.heroTitleWrap}>
+            <h1 className={styles.heroTitle}>
+              Cuida mejor<br />
+              <span className={styles.heroTitleAccent}>Gestiona con orden</span>
+            </h1>
+            <img src="/brand/logo-icon.svg" alt="CuidaBien icono" className={styles.heroIconRight} />
+          </div>
           <p className={styles.heroDesc}>
             CuidaBien es la plataforma SaaS pensada para hogares de cuido y
             organizaciones de salud.

@@ -12,9 +12,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <head>
-        <link rel="icon" href="/brand/favicon.ico" />
-      </head>
       <body>{children}</body>
     </html>
   );

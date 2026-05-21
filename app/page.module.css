@@ -45,12 +45,19 @@
   color: var(--primary); background: var(--primary-light);
   padding: 6px 14px; border-radius: 20px; border: 1px solid var(--primary-border);
 }
+.heroTitleWrap {
+  display: flex; align-items: center; justify-content: center;
+  gap: 24px; flex-wrap: wrap; margin-bottom: 24px;
+}
 .heroTitle {
   font-family: 'DM Serif Display', serif;
   font-size: clamp(36px, 6vw, 64px); line-height: 1.1;
-  color: var(--text); margin-bottom: 20px;
+  color: var(--text); margin: 0;
 }
 .heroTitleAccent { color: var(--primary); }
+.heroIconRight {
+  width: 92px; height: 92px; object-fit: contain;
+}
 .heroDesc {
   font-size: 18px; color: var(--text-muted); line-height: 1.6;
   width: 90vw; max-width: 900px; margin: 0 auto 32px;

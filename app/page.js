@@ -3,40 +3,66 @@ import { useState } from "react";
 import styles from "./page.module.css";
 
 export default function Home() {
+  const [menuAbierto, setMenuAbierto] = useState(false);
   return (
     <main className={styles.main}>
       {/* ── Navbar ── */}
       <nav className={styles.nav}>
         <div className={styles.navBrand}>
           <img src="/brand/logo.svg" alt="CuidaBien" className={styles.navLogoImg} />
-          <span className={styles.navName}>CuidaBien</span>
+          <span className={styles.navName}>
+            <span className={styles.navNameCuida}>Cuida</span><span className={styles.navNameBien}>Bien</span>
+          </span>
         </div>
         <div className={styles.navLinks}>
           <a href="#funcionalidades">Funcionalidades</a>
+          <a href="#comunidad">Comunidad</a>
           <a href="#planes">Planes</a>
           <a href="#contacto">Contacto</a>
         </div>
-        <a href="https://app.cuidabiencr.com/login" className={styles.navCta}>
-          Ingresar →
-        </a>
+        <div className={styles.navActions}>
+          <a href="#contacto" className={styles.navCtaOutline}>Solicitar prueba gratuita</a>
+          <a href="https://app.cuidabiencr.com/login" className={styles.navCta}>Ingresar →</a>
+        </div>
+        <button
+          className={styles.navHamburger}
+          onClick={() => setMenuAbierto(m => !m)}
+          aria-label="Abrir menú"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="4" y1="6" x2="20" y2="6"/>
+            <line x1="4" y1="12" x2="20" y2="12"/>
+            <line x1="4" y1="18" x2="20" y2="18"/>
+          </svg>
+        </button>
+        {menuAbierto && (
+          <div className={styles.navMobileMenu}>
+            <a href="#funcionalidades" onClick={() => setMenuAbierto(false)}>Funcionalidades</a>
+            <a href="#comunidad" onClick={() => setMenuAbierto(false)}>Comunidad</a>
+            <a href="#planes" onClick={() => setMenuAbierto(false)}>Planes</a>
+            <a href="#contacto" onClick={() => setMenuAbierto(false)}>Contacto</a>
+            <a href="#contacto" onClick={() => setMenuAbierto(false)} className={styles.navCtaOutline}>Solicitar prueba gratuita</a>
+          </div>
+        )}
       </nav>
 
       {/* ── Hero ── */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <span className={styles.heroBadge}>Hecho para Costa Rica. 🇨🇷</span>
+          <div className={styles.heroBadgeWrap}>
+            <span className={styles.heroBadge}>Hecho para Costa Rica 🇨🇷</span>
+          </div>
           <div className={styles.heroTitleWrap}>
             <h1 className={styles.heroTitle}>
-              Cuida mejor<br />
-              <span className={styles.heroTitleAccent}>Gestiona con orden</span>
+              <span className={styles.heroTitleMain}>Cuida mejor</span>
+              <span className={styles.heroTitleSub}>Gestiona con orden</span>
             </h1>
             <img src="/brand/logo-icon.svg" alt="CuidaBien icono" className={styles.heroIconRight} />
           </div>
+          <p className={styles.heroSlogan}>Información que cuida, tranquilidad que acompaña.</p>
           <p className={styles.heroDesc}>
-            CuidaBien es la plataforma SaaS pensada para hogares de cuido y
-            organizaciones de salud.
-            <br />
-            Signos vitales, medicamentos, citas y mucho más, todo en un solo lugar.
+            CuidaBien centraliza toda la información clínica del paciente -signos vitales,
+            medicamentos, citas y más- para que el equipo a cargo cuide mejor y la familia tenga tranquilidad.
           </p>
           <div className={styles.heroCtas}>
             <a href="https://app.cuidabiencr.com/login" className={styles.btnPrimary}>

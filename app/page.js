@@ -1,9 +1,21 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./page.module.css";
+
+const HERO_IMAGES = [
+  '/hero/hero-1.jpg',
+  '/hero/hero-2.jpg',
+  '/hero/hero-3.jpg',
+];
 
 export default function Home() {
   const [menuAbierto, setMenuAbierto] = useState(false);
+  const [heroIndex, setHeroIndex] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setHeroIndex(i => (i + 1) % HERO_IMAGES.length), 6000);
+    return () => clearInterval(t);
+  }, []);
   return (
     <main className={styles.main}>
       {/* ── Navbar ── */}
@@ -48,16 +60,23 @@ export default function Home() {
 
       {/* ── Hero ── */}
       <section className={styles.hero}>
+        {HERO_IMAGES.map((src, i) => (
+          <div
+            key={src}
+            className={`${styles.heroBgSlide} ${i === heroIndex ? styles.heroBgSlideActive : ''}`}
+            style={{ backgroundImage: `url(${src})` }}
+          />
+        ))}
         <div className={styles.heroContent}>
           <div className={styles.heroBadgeWrap}>
             <span className={styles.heroBadge}>Hecho para Costa Rica 🇨🇷</span>
+            <img src="/brand/logo-icon.svg" alt="CuidaBien icono" className={styles.heroBadgeIcon} />
           </div>
           <div className={styles.heroTitleWrap}>
             <h1 className={styles.heroTitle}>
               <span className={styles.heroTitleMain}>Cuida mejor</span>
               <span className={styles.heroTitleSub}>Gestiona con orden</span>
             </h1>
-            <img src="/brand/logo-icon.svg" alt="CuidaBien icono" className={styles.heroIconRight} />
           </div>
           <p className={styles.heroSlogan}>Información que cuida, tranquilidad que acompaña.</p>
           <p className={styles.heroDesc}>

@@ -51,21 +51,29 @@
 
 /* ── Hero ── */
 .hero {
-  flex: 1; display: flex; align-items: center; justify-content: center;
-  padding: 80px 32px;
-  background-color: #2a2a2a; /* placeholder hasta que llegue la foto */
-  background-size: cover; background-position: center;
-  text-align: center;
+  flex: 1; display: flex; align-items: center; justify-content: flex-start;
+  padding: 80px 32px 80px 6%;
+  min-height: 560px;
+  text-align: left;
   position: relative; overflow: hidden;
 }
+.heroBgSlide {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+  z-index: 0;
+}
+.heroBgSlideActive { opacity: 1; }
 .hero::before {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(0,158,115,0.55) 0%, rgba(0,158,115,0) 100%);
+  background: linear-gradient(to right, rgba(0,40,20,0.72) 0%, rgba(0,40,20,0.35) 55%, rgba(0,0,0,0) 100%);
   pointer-events: none;
+  z-index: 1;
 }
-.heroContent { width: min(90vw, 900px); position: relative; z-index: 1; }
-.heroBadgeWrap { text-align: left; margin-bottom: 20px; }
+.heroContent { max-width: 50%; position: relative; z-index: 2; }
+.heroBadgeWrap { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
 .heroBadge {
   display: inline-block;
   font-size: 12px; font-weight: 600;
@@ -73,7 +81,7 @@
   padding: 6px 14px; border-radius: 20px; border: 0.5px solid var(--primary);
 }
 .heroTitleWrap {
-  display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: center; justify-content: flex-start;
   gap: 24px; flex-wrap: wrap; margin-bottom: 24px;
 }
 .heroTitle {
@@ -89,21 +97,21 @@
   font-size: clamp(32px, 5vw, 56px);
   color: #F7F7F5;
 }
-.heroIconRight {
-  width: 92px; height: 92px; object-fit: contain;
+.heroBadgeIcon {
+  width: 180px; height: 180px; object-fit: contain; flex-shrink: 0;
 }
 .heroSlogan {
   font-family: 'League Spartan', sans-serif; font-weight: 500;
   font-size: clamp(18px, 2.5vw, 26px); color: #B59A3B;
-  line-height: 1.4; margin: 0 auto 16px;
-  width: 90vw; max-width: 700px;
+  line-height: 1.4; margin: 0 0 16px;
+  width: 100%; max-width: 100%;
 }
 .heroDesc {
   font-family: 'League Spartan', sans-serif; font-weight: 400;
   font-size: clamp(15px, 1.8vw, 18px); color: #F7F7F5;
-  line-height: 1.6; width: 90vw; max-width: 700px; margin: 0 auto 32px;
+  line-height: 1.6; width: 100%; max-width: 100%; margin: 0 0 32px;
 }
-.heroCtas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.heroCtas { display: flex; gap: 12px; justify-content: flex-start; flex-wrap: wrap; }
 
 /* ── Botones ── */
 .btnPrimary {
@@ -257,10 +265,16 @@
   .navMobileMenu .navCtaOutline {
     display: inline-block; text-align: center; margin-top: 4px;
   }
-  .hero { padding: 60px 20px; }
+  .hero { padding: 60px 20px; justify-content: center; text-align: center; }
   .hero::before {
-    background: linear-gradient(to bottom, rgba(0,158,115,0.55) 0%, rgba(0,158,115,0.55) 80%, transparent 100%);
+    background: linear-gradient(to bottom, rgba(0,40,20,0.75) 0%, rgba(0,40,20,0.65) 80%, rgba(0,40,20,0.5) 100%);
   }
+  .heroContent { max-width: 100%; }
+  .heroTitleWrap { justify-content: center; }
+  .heroCtas { justify-content: center; }
+  .heroSlogan { margin: 0 auto 16px; }
+  .heroDesc { margin: 0 auto 32px; }
+  .heroBadgeIcon { width: 44px; height: 44px; }
   .section { padding: 60px 20px; }
   .sectionAlt { padding: 60px 20px; }
   .featGrid { grid-template-columns: 1fr 1fr; }

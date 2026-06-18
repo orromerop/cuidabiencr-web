@@ -253,6 +253,8 @@
 .difCard {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 10px;
 }
 .difIcon {
@@ -286,51 +288,285 @@
 .sectionDesc { text-align: center; color: var(--text-muted); font-size: 16px; margin-bottom: 48px; }
 
 /* ── Features ── */
-.featGrid {
+.featGroup {
+  background: #F7F7F5;
+  border-radius: 20px;
+  padding: 28px 24px 24px;
+  margin-bottom: 24px;
+}
+.featGroupHeader { margin-bottom: 20px; }
+.featGroupLabelClinical {
+  display: inline-block;
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.9px;
+  color: #009E73; background: rgba(0,158,115,0.08);
+  border: 1px solid rgba(0,158,115,0.30);
+  padding: 5px 14px; border-radius: 20px;
+}
+.featGroupLabelAdmin {
+  display: inline-block;
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.9px;
+  color: #5a7a00; background: rgba(143,212,0,0.10);
+  border: 1px solid rgba(143,212,0,0.40);
+  padding: 5px 14px; border-radius: 20px;
+}
+.featGridClinical {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(6, 1fr);
   gap: 20px;
 }
-.featCard {
-  background: #fff; border: 1px solid var(--primary-border);
-  border-radius: 16px; padding: 24px 20px;
+.featGridClinical > *:nth-child(1) { grid-column: 1 / 3; }
+.featGridClinical > *:nth-child(2) { grid-column: 3 / 5; }
+.featGridClinical > *:nth-child(3) { grid-column: 5 / 7; }
+.featGridClinical > *:nth-child(4) { grid-column: 2 / 4; }
+.featGridClinical > *:nth-child(5) { grid-column: 4 / 6; }
+.featGridAdmin {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.featCardClinical {
+  background: #fff; border: 1px solid #009E73;
+  border-radius: 16px; overflow: hidden;
+  display: flex; flex-direction: column;
   transition: box-shadow 0.15s, transform 0.15s;
 }
-.featCard:hover { box-shadow: 0 4px 20px rgba(83,74,183,0.12); transform: translateY(-2px); }
-.featIcon { font-size: 28px; margin-bottom: 12px; }
-.featTitle { font-weight: 700; font-size: 15px; color: var(--text); margin-bottom: 8px; }
-.featDesc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+.featCardClinical:hover { box-shadow: 0 4px 24px rgba(0,158,115,0.15); transform: translateY(-2px); }
+.featCardAdmin {
+  background: #fff; border: 1px solid #8FD400;
+  border-radius: 16px; overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.featCardAdmin:hover { box-shadow: 0 4px 24px rgba(143,212,0,0.18); transform: translateY(-2px); }
+.featCardTop {
+  padding: 22px 20px 16px;
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px;
+  flex: 1;
+}
+.featIconSvg { line-height: 0; margin-bottom: 2px; }
+.featTitle { font-weight: 700; font-size: 15px; color: var(--text); }
+.featDesc { font-size: 13px; color: var(--text-muted); line-height: 1.55; margin: 0; }
+.featSemaforo { display: flex; align-items: center; gap: 7px; margin-top: 4px; }
+.semaVerde { width: 10px; height: 10px; border-radius: 50%; background: #22C55E; display: block; flex-shrink: 0; }
+.semaAmarillo { width: 10px; height: 10px; border-radius: 50%; background: #FACC15; display: block; flex-shrink: 0; }
+.semaRojo { width: 10px; height: 10px; border-radius: 50%; background: #EF4444; display: block; flex-shrink: 0; }
+.semaLabel { font-size: 11px; color: var(--text-muted); font-style: italic; }
+.featImgWrap { margin: 0 10px 10px; border-radius: 10px; overflow: hidden; flex-shrink: 0; }
+.featImg { width: 100%; height: auto; display: block; }
+.featPuente {
+  background: rgba(0,158,115,0.04);
+  border-radius: 16px;
+  padding: 36px 28px 32px;
+  margin: 8px 0 24px;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 28px;
+}
+.featPuenteTexto {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(16px, 2vw, 21px);
+  color: var(--text); line-height: 1.5; margin: 0; font-style: italic;
+  max-width: 700px;
+}
+.featPuenteImgWrap {
+  width: 100%; max-width: 780px;
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+}
+.featPuenteImg { width: 100%; height: auto; display: block; }
+.featCtaWrap { text-align: center; padding: 40px 0 0; }
+.btnGreen {
+  display: inline-block; padding: 14px 36px; border-radius: 9px;
+  background: #009E73; color: #fff; font-weight: 700; font-size: 16px;
+  transition: background 0.15s;
+}
+.btnGreen:hover { background: #007a59; }
+
+/* ── Comunidad ── */
+.comunidadSection {
+  padding: 80px 32px;
+  background: #F7F7F5;
+}
+.comunidadInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex; flex-direction: column; gap: 48px;
+}
+.comunidadGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 48px;
+  align-items: stretch;
+}
+.comunidadCol {
+  display: flex; flex-direction: column;
+}
+.comunidadCard {
+  flex: 1;
+  display: flex; flex-direction: column; gap: 10px;
+  padding-bottom: 16px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+.comunidadCard + .comunidadCard {
+  padding-top: 4px;
+  padding-bottom: 0;
+}
+.comunidadCardLabel {
+  font-weight: 700; font-size: 15px;
+  color: var(--primary);
+}
+.comunidadCardDesc {
+  font-size: 14px; color: var(--text-muted);
+  line-height: 1.7; text-align: justify; margin: 0;
+}
+.comunidadPhotoWrap {
+  border-radius: 20px; overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+}
+.comunidadPhoto { width: 100%; height: auto; display: block; }
+
+/* ── Valores de Marca ── */
+.valoresSection { padding: 80px 32px; background: #F7F7F5; }
+.valoresInner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 48px;
+}
+.valoresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.valorCard {
+  background: #fff; border: 1px solid #CCCCCC;
+  border-radius: 14px; padding: 28px 24px;
+  display: flex; flex-direction: column; gap: 12px;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.valorCard:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
+.valorIcon { line-height: 0; }
+.valorTitulo { font-weight: 700; font-size: 16px; color: var(--text); }
+.valorDesc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+/* ── Misión y Visión ── */
+.mvSection {
+  padding: 80px 32px;
+  background: #fff;
+}
+.mvGrid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+}
+.mvCard {
+  background: #F7F7F5;
+  border-left: 4px solid #009E73;
+  border-radius: 16px; overflow: hidden;
+  position: relative;
+  padding: 52px 44px;
+  min-height: 260px;
+  display: flex; align-items: center;
+}
+.mvCardBg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0.15;
+  z-index: 0;
+}
+.mvCardContent {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.mvCardEtiqueta {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: #009E73;
+}
+.mvCardTexto {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(20px, 2.4vw, 28px);
+  color: var(--text); line-height: 1.45; margin: 0;
+}
 
 /* ── Planes ── */
-.planesGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px; max-width: 1000px; margin: 0 auto;
+.planesSection { padding: 80px 32px; background: var(--primary-light); }
+.planesInner { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
+.planesBloque { display: flex; flex-direction: column; gap: 20px; }
+.planesBloqueHeader { font-size: 15px; color: var(--text-muted); line-height: 1.5; margin: 0; }
+.planesBloqueHeader strong { color: var(--text); font-weight: 700; }
+.planesFamiliarGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 720px; }
+.planesEmpresaGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+/* Card base */
+.planCardV2 {
+  background: #fff; border: 1px solid #E0E0E0; border-radius: 12px;
+  padding: 20px 20px 20px; display: flex; flex-direction: column; gap: 10px;
 }
-.planCard {
-  background: #fff; border: 1px solid var(--primary-border);
-  border-radius: 16px; padding: 28px 24px;
-  display: flex; flex-direction: column; gap: 16px; position: relative;
+.planCardDestacado2 { border-color: #009E73; border-width: 2px; box-shadow: 0 4px 20px rgba(0,158,115,0.12); }
+/* Badge pill */
+.planPill {
+  display: block; width: 100%; text-align: center;
+  font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 100px;
 }
-.planDestacado {
-  border-color: var(--primary); border-width: 2px;
-  box-shadow: 0 4px 24px rgba(83,74,183,0.18);
+.planPillBase { background: #E8F7F1; color: #006B50; }
+.planPillDorado { background: #FEF9E7; color: #92600A; }
+/* Plan name & desc */
+.planNombreV2 { font-size: 17px; font-weight: 600; color: #2F2F2F; margin-top: 4px; }
+.planDescV2 { font-size: 13px; color: #2F2F2F; line-height: 1.55; margin: 0; flex: 1; }
+/* Price */
+.planPrecioV2 { display: flex; align-items: baseline; gap: 4px; }
+.planCifra { font-size: 38px; font-weight: 700; color: #009E73; line-height: 1; }
+.planUnidad { font-size: 13px; color: #6E6E6E; }
+/* Divider */
+.planDivisorV2 { height: 0.5px; background: rgba(110,110,110,0.25); margin: 4px 0; }
+/* Items */
+.planItemsList { list-style: none; display: flex; flex-direction: column; gap: 9px; margin: 0; padding: 0; }
+.planItem { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: #6E6E6E; line-height: 1.4; }
+.planItem svg { flex-shrink: 0; margin-top: 2px; }
+/* Buttons */
+.planBtnSolido {
+  display: block; text-align: center; padding: 10px 16px; border-radius: 12px;
+  background: #009E73; color: #fff; font-size: 13px; font-weight: 600;
+  margin-top: auto; transition: background 0.15s;
 }
-.planBadge {
-  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-  background: var(--primary); color: #fff;
-  font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 20px;
-  white-space: nowrap;
+.planBtnSolido:hover { background: #007a59; }
+.planBtnOutline {
+  display: block; text-align: center; padding: 10px 16px; border-radius: 12px;
+  background: #fff; border: 1px solid #6E6E6E; color: #2F2F2F;
+  font-size: 13px; font-weight: 500; margin-top: auto; transition: background 0.15s;
 }
-.planNombre { font-weight: 700; font-size: 15px; color: var(--text-muted); }
-.planPrecio { display: flex; align-items: baseline; gap: 2px; }
-.planGratis { font-family: 'League Spartan', sans-serif; font-size: 32px; color: var(--success); }
-.planMoneda { font-size: 18px; font-weight: 700; color: var(--primary); }
-.planMonto { font-family: 'League Spartan', sans-serif; font-size: 42px; color: var(--primary); line-height: 1; }
-.planPer { font-size: 13px; color: var(--text-muted); }
-.planFeatures { list-style: none; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-.planFeatures li { font-size: 13px; color: var(--text-muted); padding-left: 16px; position: relative; }
-.planFeatures li::before { content: '✓'; position: absolute; left: 0; color: var(--success); font-weight: 700; }
+.planBtnOutline:hover { background: #f5f5f5; }
+/* Empresa a la Medida */
+.planMedida {
+  background: #006B50; border-radius: 12px; padding: 28px 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  flex-wrap: wrap;
+}
+.planMedidaNombre { font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+.planMedidaDesc { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.5; margin: 0; }
+.planMedidaBtn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: #006B50; font-size: 14px; font-weight: 600;
+  padding: 10px 22px; border-radius: 9px; white-space: nowrap; flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+.planMedidaBtn:hover { opacity: 0.9; }
+/* Garantía */
+.planesGarantia {
+  display: flex; align-items: center; gap: 8px; justify-content: center;
+  font-size: 13px; color: var(--text-muted);
+}
+.planesNota {
+  text-align: center; font-size: 13px; color: var(--text-muted);
+  font-style: italic; margin: -36px 0 0;
+}
+/* FAQ */
+.planesFaqWrap { display: flex; flex-direction: column; gap: 0; border-top: 1px solid #E0E0E0; }
+.planesFaqTitulo { font-size: 18px; font-weight: 700; color: var(--text); margin: 0 0 8px; }
+.faqItem { border-bottom: 1px solid #E0E0E0; }
+.faqPregunta {
+  width: 100%; display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; padding: 16px 0; background: none; border: none; cursor: pointer;
+  text-align: left; font-size: 14px; font-weight: 600; color: var(--text);
+}
+.faqIcono { font-size: 20px; color: #009E73; flex-shrink: 0; line-height: 1; }
+.faqRespuesta { font-size: 14px; color: var(--text-muted); line-height: 1.65; padding: 0 0 16px; margin: 0; }
 
 /* ── CTA final ── */
 .ctaSection {
@@ -427,13 +663,28 @@
   .heroBadgeIcon { width: 44px; height: 44px; }
   .section { padding: 60px 20px; }
   .sectionAlt { padding: 60px 20px; }
-  .featGrid { grid-template-columns: 1fr 1fr; }
-  .planesGrid { grid-template-columns: 1fr; }
+  .featGroup { padding: 20px 16px; }
+  .featGridClinical { grid-template-columns: 1fr; }
+  .featGridClinical > * { grid-column: auto; }
+  .featGridAdmin { grid-template-columns: 1fr 1fr; }
+  .featPuente { padding: 24px 16px; }
+  .planesSection { padding: 56px 20px; }
+  .planesFamiliarGrid { grid-template-columns: 1fr; max-width: 100%; }
+  .planesEmpresaGrid { grid-template-columns: 1fr 1fr; }
+  .planMedida { flex-direction: column; align-items: flex-start; }
+  .comunidadSection { padding: 56px 20px; }
+  .valoresSection { padding: 56px 20px; }
+  .valoresGrid { grid-template-columns: repeat(2, 1fr); }
+  .mvSection { padding: 56px 20px; }
+  .mvGrid { grid-template-columns: 1fr; }
+  .mvCard { padding: 36px 28px; min-height: 200px; }
+  .comunidadGrid { grid-template-columns: 1fr; gap: 28px; }
+  .comunidadPhotoWrap { order: -1; }
   .solicitarWrap { grid-template-columns: 1fr; gap: 32px; }
   .ctaSection { padding: 60px 20px; }
   .footer { justify-content: center; text-align: center; }
 }
 
 @media (max-width: 480px) {
-  .featGrid { grid-template-columns: 1fr; }
+  .featGridAdmin { grid-template-columns: 1fr; }
 }

@@ -824,8 +824,9 @@
   .planMedida { flex-direction: column; align-items: flex-start; }
   .comunidadSection { padding: 56px 20px; }
   .valoresSection { padding: 56px 20px; }
-  .valoresInner { width: 100%; }
-  .valoresGrid { grid-template-columns: repeat(2, 1fr); width: 100%; }
+  .valoresInner { width: 100%; min-width: 0; }
+  .valoresGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+  .valorCard { min-width: 0; word-break: break-word; }
   .mvSection { padding: 56px 20px; }
   .mvGrid { grid-template-columns: 1fr; }
   .mvCard { padding: 36px 28px; min-height: 200px; }

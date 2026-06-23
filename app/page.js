@@ -7,6 +7,11 @@ const HERO_IMAGES = [
   '/hero/hero-2.jpg',
   '/hero/hero-3.jpg',
 ];
+const HERO_IMAGES_MOBILE = [
+  '/hero/hero-1-mobile.jpg',
+  '/hero/hero-2-mobile.jpg',
+  '/hero/hero-3-mobile.jpg',
+];
 
 export default function Home() {
   const [menuAbierto, setMenuAbierto] = useState(false);
@@ -62,8 +67,15 @@ export default function Home() {
       <section className={styles.hero}>
         {HERO_IMAGES.map((src, i) => (
           <div
-            key={src}
-            className={`${styles.heroBgSlide} ${i === heroIndex ? styles.heroBgSlideActive : ''}`}
+            key={`desk-${src}`}
+            className={`${styles.heroBgSlide} ${styles.heroBgSlideDesktop} ${i === heroIndex ? styles.heroBgSlideActive : ''}`}
+            style={{ backgroundImage: `url(${src})` }}
+          />
+        ))}
+        {HERO_IMAGES_MOBILE.map((src, i) => (
+          <div
+            key={`mob-${src}`}
+            className={`${styles.heroBgSlide} ${styles.heroBgSlideMobile} ${i === heroIndex ? styles.heroBgSlideActive : ''}`}
             style={{ backgroundImage: `url(${src})` }}
           />
         ))}

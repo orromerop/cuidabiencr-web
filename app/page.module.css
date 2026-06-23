@@ -789,9 +789,10 @@
   .problemaPuntos { grid-template-columns: 1fr; gap: 14px; }
   .difSection { padding: 52px 20px; }
   .difGrid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  .hero { padding: 60px 20px; justify-content: center; text-align: center; }
+  .hero { padding: 60px 20px; justify-content: center; text-align: center; min-height: 420px; }
+  .heroBgSlide { background-position: center 25%; }
   .hero::before {
-    background: linear-gradient(to bottom, rgba(0,40,20,0.75) 0%, rgba(0,40,20,0.65) 80%, rgba(0,40,20,0.5) 100%);
+    background: linear-gradient(to bottom, rgba(0,40,20,0.60) 0%, rgba(0,40,20,0.55) 70%, rgba(0,40,20,0.45) 100%);
   }
   .heroContent { max-width: 100%; }
   .heroTitleWrap { justify-content: center; }

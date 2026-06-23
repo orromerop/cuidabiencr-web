@@ -344,9 +344,10 @@ export default function Home() {
       <section className={styles.planesSection} id="planes">
         <div className={styles.planesInner}>
           <h2 className={styles.sectionTitle}>Encontrá el plan ideal que necesitas</h2>
-          <p className={styles.sectionDesc}>
-            Elige el plan según el tipo de cuidado que gestionas. Todos incluyen acceso completo a los módulos clínicos.
-          </p>
+          <div className={styles.planesDescBurbuja}>
+            Elige el plan según el tipo de cuidado que gestionas.<br />
+            Todos incluyen acceso completo a los módulos clínicos.
+          </div>
 
           {/* Bloque Familiares */}
           <div className={styles.planesBloque}>
@@ -397,20 +398,52 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Seguridad y Confianza ── */}
+      <section className={styles.seguridadSection} id="seguridad">
+        <div className={styles.seguridadInner}>
+          <h2 className={styles.sectionTitle}>Tu información y la de los pacientes está protegida</h2>
+          <div className={styles.seguridadGrid}>
+            {seguridadItems.map((item) => (
+              <div key={item.titulo} className={styles.seguridadCard}>
+                <span className={styles.seguridadIcon}>{item.icon}</span>
+                <strong className={styles.seguridadCardTitle}>{item.titulo}</strong>
+                <p className={styles.seguridadCardDesc}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Resultados esperados ── */}
+      <section className={styles.resultadosSection} id="resultados">
+        <div className={styles.resultadosInner}>
+          <h2 className={styles.sectionTitle}>Así cambia el cuidado cuando la información<br />está en orden</h2>
+          <div className={styles.resultadosGrid}>
+            {resultadosItems.map((item) => (
+              <div key={item.titulo} className={styles.resultadoCard}>
+                <span className={styles.resultadoIcon}>{item.icon}</span>
+                <strong className={styles.resultadoCardTitle}>{item.titulo}</strong>
+                <p className={styles.resultadoCardDesc}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Solicitar acceso ── */}
-      <section className={styles.section} id="contacto">
+      <section className={styles.contactoSection} id="contacto">
         <div className={styles.solicitarWrap}>
           <div className={styles.solicitarInfo}>
-            <span className={styles.heroBadge}>Acceso por invitación</span>
-            <h2 className={styles.solicitarTitle}>¿Querés probarlo?</h2>
+            <h2 className={styles.solicitarTitle}>Comienza hoy sin costo</h2>
             <p className={styles.solicitarDesc}>
-              Completá el formulario y en menos de 24 horas te enviamos un código de acceso para explorar la plataforma <strong>gratis por 7 días</strong>. Sin tarjeta de crédito.
+              Completa el formulario y en menos de 24 horas te enviamos <strong>acceso gratuito por 7 días</strong>. Sin tarjeta de crédito. Sin compromiso.
             </p>
-            <ul className={styles.solicitarBeneficios}>
-              <li>✓ Acceso completo a todos los módulos</li>
-              <li>✓ Sin compromiso de pago</li>
-              <li>✓ Soporte durante el período de prueba</li>
-            </ul>
+            <div className={styles.solicitarWhatsapp}>
+              <p>¿Prefieres hablar directamente?</p>
+              <a href="https://wa.me/50688287548" target="_blank" rel="noopener noreferrer">
+                Escríbenos al WhatsApp →
+              </a>
+            </div>
           </div>
           <SolicitarForm />
         </div>
@@ -418,8 +451,8 @@ export default function Home() {
 
       {/* ── CTA final ── */}
       <section className={styles.ctaSection}>
-        <h2 className={styles.ctaTitle}>Gestión moderna para el cuido que merecen</h2>
-        <p className={styles.ctaDesc}>Únete a las organizaciones que ya confían en CuidaBien.</p>
+        <h2 className={styles.ctaTitle}>Información que cuida, tranquilidad que acompaña</h2>
+        <p className={styles.ctaDesc}>Únete a las familias y organizaciones que ya cuidan mejor con CuidaBien.</p>
         <a href="#contacto" className={styles.btnPrimaryLg}>
           Solicitar acceso gratuito →
         </a>
@@ -427,33 +460,84 @@ export default function Home() {
 
       {/* ── Footer ── */}
       <footer className={styles.footer}>
-        <div className={styles.footerBrand}>
-          <img src="/brand/logo.svg" alt="CuidaBien" className={styles.navLogoImg} />
-          <span>CuidaBien</span>
+        <div className={styles.footerInner}>
+          <div className={styles.footerGrid}>
+
+            {/* Columna 1 — Marca + Navegación */}
+            <div className={styles.footerCol}>
+              <div className={styles.footerBrand}>
+                <img src="/brand/logo.svg" alt="CuidaBien" className={styles.navLogoImg} />
+                <span>CuidaBien</span>
+              </div>
+              <p className={styles.footerColLabel}>Navegación</p>
+              <nav className={styles.footerNav}>
+                <a href="#funcionalidades">Funcionalidades</a>
+                <a href="#comunidad">Comunidad</a>
+                <a href="#planes">Planes</a>
+                <a href="#contacto">Contacto</a>
+              </nav>
+            </div>
+
+            {/* Columna 2 — Legal */}
+            <div className={styles.footerCol}>
+              <p className={styles.footerColLabel}>Legal</p>
+              <nav className={styles.footerNav}>
+                <a href="/terminos">Términos de uso</a>
+                <a href="/privacidad">Política de privacidad</a>
+              </nav>
+            </div>
+
+            {/* Columna 3 — Contacto */}
+            <div className={styles.footerCol}>
+              <p className={styles.footerColLabel}>Contacto</p>
+              <div className={styles.footerContactInfo}>
+                <a href="https://wa.me/50688287548" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>
+                  WhatsApp +506-8828-7548
+                </a>
+                <div className={styles.footerSocial}>
+                  <a href="#" target="_blank" rel="noopener noreferrer" className={styles.footerSocialBtn} aria-label="Instagram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  </a>
+                  <a href="#" target="_blank" rel="noopener noreferrer" className={styles.footerSocialBtn} aria-label="Facebook">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                  </a>
+                  <a href="#" target="_blank" rel="noopener noreferrer" className={styles.footerSocialBtn} aria-label="LinkedIn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div className={styles.footerBottom}>
+            <p className={styles.footerCopy}>© {new Date().getFullYear()} CuidaBien. Hecho con ♥ en Costa Rica 🇨🇷</p>
+          </div>
         </div>
-        <p className={styles.footerCopy}>© {new Date().getFullYear()} CuidaBien. Hecho con ♥ en Costa Rica.</p>
       </footer>
     </main>
   );
 }
 
 function SolicitarForm() {
-  const [form, setForm] = useState({ nombre_contacto: '', org_nombre: '', email: '' });
-  const [estado, setEstado] = useState(null); // null | 'enviando' | 'ok' | 'error'
+  const [form, setForm] = useState({
+    nombre_contacto: '', email: '', telefono: '',
+    tipo_org: '', num_pacientes: '', comentarios: '',
+  });
+  const [estado, setEstado] = useState(null);
   const [error, setError] = useState('');
 
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
 
   async function enviar() {
-    if (!form.nombre_contacto || !form.org_nombre || !form.email) {
-      setError('Completá todos los campos'); setEstado('error'); return;
+    if (!form.nombre_contacto || !form.email || !form.telefono) {
+      setError('Completá nombre, correo y teléfono'); setEstado('error'); return;
     }
     setEstado('enviando'); setError('');
     try {
       const res = await fetch('https://app.cuidabiencr.com/auth/solicitar-acceso', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, org_nombre: form.tipo_org }),
       });
       if (res.ok) {
         setEstado('ok');
@@ -471,7 +555,7 @@ function SolicitarForm() {
       <div className={styles.formOk}>
         <div className={styles.formOkIcon}>✓</div>
         <h3>¡Solicitud recibida!</h3>
-        <p>Te contactamos en menos de 24 horas con tu código de acceso.</p>
+        <p>Te contactamos en menos de 24 horas con tu acceso gratuito.</p>
       </div>
     </div>
   );
@@ -479,25 +563,46 @@ function SolicitarForm() {
   return (
     <div className={styles.formCard}>
       <div className={styles.formField}>
-        <label className={styles.formLabel}>Tu nombre</label>
+        <label className={styles.formLabel}>Nombre</label>
         <input className={styles.formInput} type="text" placeholder="María González"
           value={form.nombre_contacto} onChange={e => set('nombre_contacto', e.target.value)} />
-      </div>
-      <div className={styles.formField}>
-        <label className={styles.formLabel}>Nombre de tu organización</label>
-        <input className={styles.formInput} type="text" placeholder="Hogar San José"
-          value={form.org_nombre} onChange={e => set('org_nombre', e.target.value)} />
       </div>
       <div className={styles.formField}>
         <label className={styles.formLabel}>Correo electrónico</label>
         <input className={styles.formInput} type="email" placeholder="tu@email.com"
           value={form.email} onChange={e => set('email', e.target.value)} />
       </div>
+      <div className={styles.formField}>
+        <label className={styles.formLabel}>Teléfono-WhatsApp</label>
+        <input className={styles.formInput} type="tel" placeholder="+000 0000000000"
+          value={form.telefono} onChange={e => set('telefono', e.target.value)} />
+      </div>
+      <div className={styles.formField}>
+        <label className={styles.formLabel}>Tipo de organización</label>
+        <select className={styles.formInput} value={form.tipo_org} onChange={e => set('tipo_org', e.target.value)}>
+          <option value="">Seleccioná una opción</option>
+          <option value="Hogar de cuido">Hogar de cuido</option>
+          <option value="Clínica">Clínica</option>
+          <option value="Familia cuidadora">Familia cuidadora</option>
+          <option value="Centro de rehabilitación">Centro de rehabilitación</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+      <div className={styles.formField}>
+        <label className={styles.formLabel}>Cantidad aproximada de pacientes o personas bajo cuidado</label>
+        <input className={styles.formInput} type="number" placeholder="05" min="1"
+          value={form.num_pacientes} onChange={e => set('num_pacientes', e.target.value)} />
+      </div>
+      <div className={styles.formField}>
+        <label className={styles.formLabel}>Coméntanos</label>
+        <textarea className={styles.formTextarea} placeholder="Detalla algo que necesites compartir"
+          value={form.comentarios} onChange={e => set('comentarios', e.target.value)} rows={3} />
+      </div>
       {estado === 'error' && <p className={styles.formError}>{error}</p>}
-      <button className={styles.btnPrimary} onClick={enviar} disabled={estado === 'enviando'}
-        style={{ width: '100%', marginTop: '4px' }}>
-        {estado === 'enviando' ? 'Enviando...' : 'Solicitar acceso gratuito'}
+      <button className={styles.btnContacto} onClick={enviar} disabled={estado === 'enviando'}>
+        {estado === 'enviando' ? 'Enviando...' : 'Solicitar mi prueba gratuita'}
       </button>
+      <p className={styles.formPrivacy}>Tus datos serán utilizados únicamente para coordinar el acceso a la prueba o resolver tus consultas.</p>
     </div>
   );
 }
@@ -796,6 +901,67 @@ const planesEmpresariales = [
     precio: 400,
     items: ['400 usuarios', '100 pacientes', 'Todos los módulos clínicos', 'Soporte prioritario', 'Reportes'],
     destacado: false, badgeLabel: 'Empresarial',
+  },
+];
+
+const resultadosItems = [
+  {
+    titulo: 'Más orden en el registro',
+    desc: 'Cada medicamento, cita y evolución documentada en el lugar correcto, sin papeles ni cuadernos que se pierdan.',
+    icon: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#006B50" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="12" y2="16"/></svg>),
+  },
+  {
+    titulo: 'Menos dudas para el equipo',
+    desc: 'El equipo accede a la misma información actualizada, evitando malentendidos entre turnos.',
+    icon: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#006B50" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><polyline points="9 11 12 14 16 9"/></svg>),
+  },
+  {
+    titulo: 'Mejor comunicación con familias',
+    desc: 'Las familias consultan el estado del paciente desde su propio acceso, sin interrumpir al personal.',
+    icon: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#006B50" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>),
+  },
+  {
+    titulo: 'Mayor tranquilidad familiar',
+    desc: 'Saber que el cuidado está siendo registrado y supervisado genera confianza en quienes más importan.',
+    icon: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#006B50" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>),
+  },
+  {
+    titulo: 'Trazabilidad completa del cuidado',
+    desc: 'Cada acción queda registrada con fecha, hora y responsable. Lista para revisiones clínicas o auditorías.',
+    icon: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#006B50" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>),
+  },
+];
+
+const seguridadItems = [
+  {
+    titulo: 'Acceso por perfiles',
+    desc: 'Cada usuario ve solo lo que le corresponde.',
+    icon: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#009E73" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="7" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>),
+  },
+  {
+    titulo: 'Información centralizada',
+    desc: 'Todo en un solo lugar, seguro.',
+    icon: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8FD400" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3S3 13.66 3 12"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/></svg>),
+  },
+  {
+    titulo: 'Trazabilidad completa',
+    desc: 'Registro de cada acción en el sistema.',
+    icon: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#009E73" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>),
+  },
+  {
+    titulo: 'Control de permisos',
+    desc: 'El administrador decide quién accede a qué.',
+    icon: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8FD400" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>),
+  },
+  {
+    titulo: 'Registro de actividad',
+    desc: 'Historial completo de cambios (audit log).',
+    icon: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#009E73" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="12" y2="16"/></svg>),
+  },
+  {
+    titulo: 'Acceso familiar en modo lectura',
+    desc: 'La familia puede ver sin modificar nada.',
+    icon: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8FD400" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>),
   },
 ];
 

@@ -805,7 +805,18 @@
   .sectionAlt { padding: 60px 20px; }
   .featGroup { padding: 20px 16px; }
   .featGridClinical { grid-template-columns: 1fr; }
-  .featGridClinical > * { grid-column: auto; }
+  .featGridClinical > *:nth-child(1),
+  .featGridClinical > *:nth-child(2),
+  .featGridClinical > *:nth-child(3),
+  .featGridClinical > *:nth-child(4),
+  .featGridClinical > *:nth-child(5) { grid-column: auto; }
+  .featCardClinical { flex-direction: row; align-items: stretch; min-height: 130px; }
+  .featCardClinical .featImgWrap {
+    order: -1; width: 120px; flex-shrink: 0; margin: 0;
+    border-radius: 0; border-top-left-radius: 15px; border-bottom-left-radius: 15px;
+  }
+  .featCardClinical .featImg { height: 100%; object-fit: cover; }
+  .featCardClinical .featCardTop { align-items: flex-start; text-align: left; padding: 14px 12px; }
   .featGridAdmin { grid-template-columns: 1fr 1fr; }
   .featPuente { padding: 24px 16px; }
   .planesSection { padding: 56px 20px; }
